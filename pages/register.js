@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react"
 import { useEffect } from "react";
 import { auth, db } from "../firebase/firebase";
-import { IoLogoGoogle, IoLogoFacebook } from "react-icons/io";
+import { IoLogoGoogle } from "react-icons/io";
 import {
         createUserWithEmailAndPassword,
         updateProfile,
@@ -20,7 +20,7 @@ import Loader from "@/components/Loader";
 
 
 const gProvider = new GoogleAuthProvider();
-const fProvider = new FacebookAuthProvider();
+// const fProvider = new FacebookAuthProvider();
 
 const Register = () => {
     const router = useRouter()
@@ -41,13 +41,13 @@ const Register = () => {
         }
     };
 
-    const signInWithFacebook = async() => {
-        try {
-           await signInWithPopup(auth, fProvider);
-        } catch (error) {
-            console.error( error);
-        }
-    };
+    // const signInWithFacebook = async() => {
+    //     try {
+    //        await signInWithPopup(auth, fProvider);
+    //     } catch (error) {
+    //         console.error( error);
+    //     }
+    // };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -88,7 +88,7 @@ const Register = () => {
      <Loader />
   ) : ( 
   <div className="h-[100vh] flex justify-center items-center bg-c1">
-    <div className="flex items-center flex-col">
+    <div className="flex items-center flex-col w-[600px]">
         <div className="text-center">
             <div className="text-4xl font-bold">
                 Create New  Account
@@ -97,20 +97,20 @@ const Register = () => {
                 Connect and chat with anyone ,anywhere
             </div>
         </div>
-        <div className="flex items-center gap-2 w-full mt-10 mb-5">
+        <div className="flex items-center gap-2 w-full ml-14 mt-10 mb-5 ">
             <div className="bg-gradient-to-r from-indigo-500 via-purple-500 
-            to-pink-500 w-1/2 h-14 rounded-md cursor-pointer p-[1px]"
+            to-pink-500 w-2/3 h-14 rounded-md ml-14 cursor-pointer p-[1px]"
             onClick={signInWithGoogle}
             >
-                <div className="flex items-center justify-center gap-3
-                text-white font-semibold bg-c1 w-full h-full rounded-md">
+                <div className="flex items-center justify-center gap-3 
+                text-white font-semibold bg-c1  w-full h-full rounded-md">
                     <IoLogoGoogle size={24} />
                     <span>
                         Login with Google
                     </span>
                 </div>
             </div>
-            <div className="bg-gradient-to-r from-indigo-500 via-purple-500 
+            {/* <div className="bg-gradient-to-r from-indigo-500 via-purple-500 
             to-pink-500 w-1/2 h-14 rounded-md cursor-pointer p-[1px]"
             onClick={signInWithFacebook}
             >
@@ -121,7 +121,7 @@ const Register = () => {
                         Login with Facebook
                     </span>
                 </div>
-            </div>
+            </div> */}
         </div> 
         <div className="flex items-center gap-1">
             <span className="w-5 h-[1px] bg-c3"></span>
